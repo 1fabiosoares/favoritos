@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Favorites</string>
+    <string name="action_send">Send</string>
+    <string name="action_settings">Settings</string>
+    <string name="add_button">Add</string>
+    <string name="add_clear_button">Clear</string>
+    <string name="add_title">Title</string>
+    <string name="add_title_activity">Add</string>
+    <string name="add_title_hint">Type the title here</string>
+    <string name="add_url">URL</string>
+    <string name="add_url_hint">Type the URL here</string>
+    <string name="edit">Edit</string>
+    <string name="deleteItem">Erase</string>
+    <string name="shareItem">Share</string>
+    <string name="showOnBrowser">Show on Browser</string>
+</resources>

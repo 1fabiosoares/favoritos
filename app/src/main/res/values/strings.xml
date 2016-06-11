@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Favoritos</string>
+
+    <string name="action_settings">Configurações</string>
+    <string name="action_send">Enviar</string>
+
+    <string name="add_title_activity">Adicionar</string>
+    <string name="add_title">Titulo</string>
+    <string name="add_title_hint">Digite o titulo aqui</string>
+    <string name="add_url">URL</string>
+    <string name="add_url_hint">Digite a URL aqui</string>
+    <string name="add_button">Adicionar</string>
+    <string name="add_clear_button">Limpar</string>
+
+    <string name="edit">Alterar</string>
+    <string name="showOnBrowser">Abrir no navegador</string>
+    <string name="deleteItem">Apagar item</string>
+    <string name="shareItem">Compartilhar</string>
+
+</resources>
