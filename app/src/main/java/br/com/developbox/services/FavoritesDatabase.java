@@ -37,7 +37,6 @@ public class FavoritesDatabase extends SQLiteOpenHelper{
                 ID+" integer primary key autoincrement not null, "+
                 TITLE+" text,"+
                 URL+" text);");
-        db.close();
     }
     public void add(SQLiteDatabase db, Favorite favorite){
         ContentValues values = new ContentValues();
@@ -51,7 +50,6 @@ public class FavoritesDatabase extends SQLiteOpenHelper{
         }else{
             Log.e("DATABASE", id.toString());
         }
-        db.close();
     }
     public Favorite[] getAll(SQLiteDatabase db){
         Cursor list = db.query(TABLE_NAME, new String[] {ID, TITLE, URL}, null, null, null, null, String.format("%s", TITLE));
@@ -69,7 +67,7 @@ public class FavoritesDatabase extends SQLiteOpenHelper{
                 count++;
             }while(list.moveToNext());
             list.close();
-            db.close();
+
             return t;
         }
 
@@ -88,7 +86,6 @@ public class FavoritesDatabase extends SQLiteOpenHelper{
 
             fav.setUrl(result.getString(2));
         }
-        db.close();
         return fav;
 
     }

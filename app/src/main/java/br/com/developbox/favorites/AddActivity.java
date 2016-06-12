@@ -46,15 +46,15 @@ public class AddActivity extends AppCompatActivity {
         this.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(addTitleField.getText().equals("")){
+                if(addTitleField.getText().toString().equals("")){
                     Toast.makeText(AddActivity.this, "O título não pode está limpo.", Toast.LENGTH_SHORT).show();
                     forceKeyBoard(addTitleField);
                 }
-                if(urlField.getText().equals("")){
+                if(urlField.getText().toString().equals("")){
                     Toast.makeText(AddActivity.this, "O campo de URL não pode está limpo.", Toast.LENGTH_SHORT).show();
                     forceKeyBoard(urlField);
                 }
-                if(!addTitleField.getText().equals("") && !urlField.getText().equals("")){
+                if(!addTitleField.getText().toString().equals("") && !urlField.getText().toString().equals("")){
                     FavoritesDatabase db = new FavoritesDatabase(getBaseContext());
                     Favorite favorite = new Favorite(addTitleField.getText().toString(), urlField.getText().toString());
                     db.add(db.getWritableDatabase(), favorite);
