@@ -6,19 +6,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.com.developbox.services.Favorite;
 import br.com.developbox.services.FavoritesDatabase;
 
 public class MainActivity extends AppCompatActivity {
     private ListView listView;
-    private String list[];
     private Favorite t[];
 
 
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                     shareString += t[i].getShareString()+"\n";
                 }
                 Intent sendIt = new Intent(Intent.ACTION_SEND);
-                sendIt.setType("text/html");
+                sendIt.setType("text/plain");
                 sendIt.putExtra(Intent.EXTRA_TEXT, shareString);
 
                 startActivity(sendIt);
@@ -88,11 +91,18 @@ public class MainActivity extends AppCompatActivity {
             startActivity(it);
         }else {
             this.t = db.getAll(db.getReadableDatabase());
-            this.list = new String[t.length];
+            ArrayList<Map<String, String>> listaMap = new ArrayList<Map<String, String>>();
             for(int i = 0; i < t.length; i++){
-                list[i] = String.format("%s", t[i].getTitle());
+                Map<String, String> datum = new HashMap<String, String>(2);
+                datum.put("Linha 1", t[i].getTitle());
+                datum.put("Linha 2", t[i].getUrl());
+                listaMap.add(datum);
             }
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_list_item_1, list);
+            SimpleAdapter adapter = new SimpleAdapter(this,
+                    listaMap,
+                    android.R.layout.simple_list_item_2,
+                    new String[] {"Linha 1", "Linha 2"},
+                    new int[] {android.R.id.text1, android.R.id.text2});
             this.listView.setAdapter(adapter);
 
             this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

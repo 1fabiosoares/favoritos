@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -103,7 +102,7 @@ public class EditActivity extends AppCompatActivity {
             case R.id.shareItem:
                 Log.i("ACTION BAR CLICK", "SHARE ITEM");
                 Intent sendIt = new Intent(Intent.ACTION_SEND);
-                sendIt.setType("text/html");
+                sendIt.setType("text/plain");
                 sendIt.putExtra(Intent.EXTRA_TEXT, favorite.getShareString());
                 startActivity(sendIt);
 
