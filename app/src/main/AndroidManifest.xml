@@ -23,7 +23,16 @@
         </activity>
         <activity
             android:name="br.com.developbox.favorites.AddActivity"
-            android:label="@string/add_title_activity" />
+            android:label="@string/addToFavorites" >
+                <intent-filter>
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                    <data android:scheme="http" />
+                    <data android:scheme="https" />
+                    <data android:host="*" />
+                </intent-filter>
+        </activity>
         <activity
             android:name="br.com.developbox.favorites.EditActivity"
             android:label="@string/edit"/>

@@ -1,8 +1,9 @@
 package br.com.developbox.favorites;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +37,6 @@ public class AddActivity extends AppCompatActivity {
         this.clearButton = (Button) findViewById(R.id.clearButton);
         this.addButton = (Button) findViewById(R.id.addButton);
 
-
         this.clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +63,8 @@ public class AddActivity extends AppCompatActivity {
                 }
             }
         });
+
+        getExtras();
     }
 
     @Override
@@ -92,6 +94,14 @@ public class AddActivity extends AppCompatActivity {
     private void forceKeyBoard(View component){
         InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         keyboard.showSoftInput(component, InputMethodManager.SHOW_FORCED);
+    }
+    private void getExtras(){
+        Intent extras = getIntent();
+
+        if(extras.getAction() == Intent.ACTION_VIEW){
+            urlField.setText(extras.getData().toString());
+            forceKeyBoard(addTitleField);
+        }
     }
 
 }

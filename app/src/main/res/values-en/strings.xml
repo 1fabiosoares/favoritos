@@ -14,4 +14,5 @@
     <string name="deleteItem">Erase</string>
     <string name="shareItem">Share</string>
     <string name="showOnBrowser">Show on Browser</string>
+    <string name="addToFavorites">Add to Favorites</string>
 </resources>

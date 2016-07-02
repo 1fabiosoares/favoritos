@@ -14,4 +14,5 @@
     <string name="deleteItem">Apagar</string>
     <string name="shareItem">Compartilhar</string>
     <string name="showOnBrowser">Abrir no navegador</string>
+    <string name="addToFavorites">Adicionar aos Favoritos</string>
 </resources>
