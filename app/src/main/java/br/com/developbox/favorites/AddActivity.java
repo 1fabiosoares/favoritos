@@ -15,7 +15,8 @@ import android.widget.Toast;
 import br.com.developbox.services.Favorite;
 import br.com.developbox.services.FavoritesDatabase;
 
-public class AddActivity extends AppCompatActivity {
+public class AddActivity extends AppCompatActivity{
+    private boolean first = false;
 
     private EditText addTitleField;
     private EditText urlField;
@@ -28,7 +29,10 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent it = getIntent();
+        if(it != null){
+            first = it.getBooleanExtra("First", false);
+        }
 
         this.keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         this.addTitleField = (EditText) findViewById(R.id.addTitleField);
@@ -59,6 +63,10 @@ public class AddActivity extends AppCompatActivity {
                     Favorite favorite = new Favorite(addTitleField.getText().toString(), urlField.getText().toString());
                     db.add(db.getWritableDatabase(), favorite);
                     clearFields();
+                    if(first){
+                        Intent it = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(it);
+                    }
                     finish();
                 }
             }
@@ -70,7 +78,9 @@ public class AddActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
-
+        if(!first){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         return true;
     }
     @Override

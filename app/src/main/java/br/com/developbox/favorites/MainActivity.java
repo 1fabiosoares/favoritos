@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         loadList();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -88,7 +87,9 @@ public class MainActivity extends AppCompatActivity {
         FavoritesDatabase db = new FavoritesDatabase(getBaseContext());
         if(db.getAll(db.getReadableDatabase()) == null){
             Intent it = new Intent(getBaseContext(), AddActivity.class);
+            it.putExtra("First", true);
             startActivity(it);
+            finish();
         }else {
             this.t = db.getAll(db.getReadableDatabase());
             ArrayList<Map<String, String>> listaMap = new ArrayList<Map<String, String>>();
